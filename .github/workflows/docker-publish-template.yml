@@ -23,7 +23,7 @@ on:
         description: Package path
         required: false
         type: string
-        default: 'docker/'
+        default: '.'
       registry:
         description: Github released tag name
         required: false
