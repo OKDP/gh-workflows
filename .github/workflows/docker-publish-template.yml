@@ -100,7 +100,8 @@ jobs:
       - name: Build and push to ${{ steps.registry.outputs.registry_repo }} repository 📤
         uses: docker/build-push-action@v5
         with:
-          context: ${{ inputs.path }}
+          context: .
+          file: ${{ inputs.path }}Dockerfile
           platforms: linux/amd64,linux/arm64
           push: true
           tags: ${{ steps.image-tags.outputs.tags }}
