@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.1](https://github.com/OKDP/gh-workflows/compare/v1.0.0...v1.0.1) (2024-07-16)
+
+
+### Bug Fixes
+
+* Change docker root context to git repo root folder ([3614207](https://github.com/OKDP/gh-workflows/commit/3614207c78e9558f7f84c2147f716ba6bd876530))
+
 ## 1.0.0 (2024-07-16)
 
 
