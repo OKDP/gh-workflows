@@ -60,18 +60,18 @@ jobs:
   
       - name: Free up disk space 🧹
         if: steps.list-changed.outputs.changed == 'true'
-        uses: idirze/workflows/.github/actions/free-disk-space@main
+        uses: okdp/gh-workflows/.github/actions/free-disk-space@main
 
       - name: Set up kind cluster ✅
         if: steps.list-changed.outputs.changed == 'true'
-        uses: idirze/workflows/.github/actions/setup-kind@main
+        uses: okdp/gh-workflows/.github/actions/setup-kind@main
 
       - name: Run chart-testing (install) ✅
         if: steps.list-changed.outputs.changed == 'true'
         run: ct install --config .ct.yml --print-config
 
       - name: Install helm-docs
-        uses: idirze/workflows/.github/actions/helm-docs@main
+        uses: okdp/gh-workflows/.github/actions/helm-docs@main
 
       - name: Generate helm docs
         run: |

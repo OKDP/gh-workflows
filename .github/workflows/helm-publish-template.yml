@@ -87,8 +87,7 @@ jobs:
         id: registry
         run:  |
             echo "registry=${{ vars.REGISTRY || 'quay.io' }}" >> $GITHUB_OUTPUT
-            echo "registry_repo=${{ vars.REGISTRY || 'quay.io' }}/okdp" >> $GITHUB_OUTPUT
-            #echo "registry_repo=${{ vars.REGISTRY || 'quay.io' }}/${GITHUB_REPOSITORY_OWNER@L}" >> $GITHUB_OUTPUT
+            echo "registry_repo=${{ vars.REGISTRY || 'quay.io' }}/${GITHUB_REPOSITORY_OWNER@L}" >> $GITHUB_OUTPUT
      
       # More secure than helm registry login
       - name: Login into ${{ steps.registry.outputs.registry }} oci charts registry 🔐

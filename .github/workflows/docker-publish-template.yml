@@ -48,7 +48,7 @@ jobs:
 
       - name: Get latest GitHub Release tag name 📥
         id: latest-image-tag
-        uses: idirze/workflows/.github/actions/latest-image-tag@main
+        uses: okdp/gh-workflows/.github/actions/latest-image-tag@main
 
   docker-image-publish:
     needs: [latest-image-tag]
@@ -63,17 +63,16 @@ jobs:
 
       ### Common steps between CI and Publish
       - name: Free up disk space 📦
-        uses: idirze/workflows/.github/actions/free-disk-space@main
+        uses: okdp/gh-workflows/.github/actions/free-disk-space@main
 
       - name: Set up QEMU and Docker Buildx 📦
-        uses: idirze/workflows/.github/actions/setup-buildx@main
+        uses: okdp/gh-workflows/.github/actions/setup-buildx@main
 
       - name: Set up container registry 📦
         id: registry
         run:  |
             echo "registry=${{ vars.REGISTRY || inputs.registry }}" >> $GITHUB_OUTPUT
-            echo "registry_repo=${{ vars.REGISTRY || inputs.registry }}/okdp" >> $GITHUB_OUTPUT
-            #echo "registry_repo=${{ vars.REGISTRY || inputs.registry }}/${GITHUB_REPOSITORY_OWNER@L}" >> $GITHUB_OUTPUT
+            echo "registry_repo=${{ vars.REGISTRY || inputs.registry }}/${GITHUB_REPOSITORY_OWNER@L}" >> $GITHUB_OUTPUT
 
       ### Publish steps
       ### The publish and periodic rebuilds are based on the latest stable github release tag
