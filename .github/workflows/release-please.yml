@@ -51,7 +51,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Set up GitHub Actions git bot 📦
-        uses: okdp/gh-workflows/.github/actions/setup-git-bot@main
+        uses: okdp/gh-workflows/.github/actions/setup-git-bot@v1
 
         # https://github.com/google-github-actions/release-please-action/blob/main/.github/workflows/release-please.yaml
       - name: Update major tag to the latest tag

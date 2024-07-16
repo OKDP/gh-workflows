@@ -48,7 +48,7 @@ jobs:
 
       - name: Get latest GitHub Release tag name 📥
         id: latest-image-tag
-        uses: okdp/gh-workflows/.github/actions/latest-image-tag@main
+        uses: okdp/gh-workflows/.github/actions/latest-image-tag@v1
 
   docker-image-publish:
     needs: [latest-image-tag]
@@ -63,10 +63,10 @@ jobs:
 
       ### Common steps between CI and Publish
       - name: Free up disk space 📦
-        uses: okdp/gh-workflows/.github/actions/free-disk-space@main
+        uses: okdp/gh-workflows/.github/actions/free-disk-space@v1
 
       - name: Set up QEMU and Docker Buildx 📦
-        uses: okdp/gh-workflows/.github/actions/setup-buildx@main
+        uses: okdp/gh-workflows/.github/actions/setup-buildx@v1
 
       - name: Set up container registry 📦
         id: registry

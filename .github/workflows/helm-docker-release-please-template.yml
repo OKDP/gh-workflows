@@ -45,7 +45,7 @@ jobs:
   helm-chart-publish:
     if: inputs.package_type == 'helm'
     name: "Helm publish (${{ inputs.package }}-${{ inputs.version }})"
-    uses: okdp/gh-workflows/.github/workflows/helm-publish-template.yml@main
+    uses: okdp/gh-workflows/.github/workflows/helm-publish-template.yml@v1
     with:
         path: ${{ inputs.path }}
         chart_name: ${{ inputs.package }}
@@ -56,7 +56,7 @@ jobs:
   docker-publish:
     if: inputs.package_type == 'docker'
     name: "Docker publish (${{ inputs.package }}-${{ inputs.version }})"
-    uses: okdp/gh-workflows/.github/workflows/docker-publish-template.yml@main
+    uses: okdp/gh-workflows/.github/workflows/docker-publish-template.yml@v1
     secrets: inherit
 
 
