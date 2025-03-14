@@ -18,6 +18,12 @@ name: ci
 
 on:
   workflow_call:
+    inputs:
+      skip_chart_test:
+        description: Wether to deploy and test the chart
+        required: false
+        type: boolean
+        default: false
 
 defaults:
   run:
@@ -59,15 +65,15 @@ jobs:
         run: ct lint --config .ct.yml --check-version-increment=false --print-config
   
       - name: Free up disk space 🧹
-        if: steps.list-changed.outputs.changed == 'true'
+        if: steps.list-changed.outputs.changed == 'true' && inputs.skip_chart_test == 'false'
         uses: okdp/gh-workflows/.github/actions/free-disk-space@v1
 
       - name: Set up kind cluster ✅
-        if: steps.list-changed.outputs.changed == 'true'
+        if: steps.list-changed.outputs.changed == 'true' && inputs.skip_chart_test == 'false'
         uses: okdp/gh-workflows/.github/actions/setup-kind@v1
 
       - name: Run chart-testing (install) ✅
-        if: steps.list-changed.outputs.changed == 'true'
+        if: steps.list-changed.outputs.changed == 'true' && inputs.skip_chart_test == 'false'
         run: ct install --config .ct.yml --print-config
 
       - name: Install helm-docs
