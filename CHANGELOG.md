@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0](https://github.com/OKDP/gh-workflows/compare/v1.0.1...v1.1.0) (2025-03-14)
+
+
+### Features
+
+* **build-pipeline:** add support for go and node projects ([c9d4612](https://github.com/OKDP/gh-workflows/commit/c9d461262820cc8ea34444446d2ca4adf10b8cf5))
+
 ## [1.0.1](https://github.com/OKDP/gh-workflows/compare/v1.0.0...v1.0.1) (2024-07-16)
 
 
