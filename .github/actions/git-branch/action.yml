@@ -1,0 +1,53 @@
+#
+# Copyright 2025 okdp.io
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+
+name: 'Get Git Branch Name'
+description: 'Extract branch name for push or pull_request events.'
+inputs:
+  event_name:
+    description: 'The event that triggered the workflow (push, pull_request).'
+    required: true
+  ref:
+    description: 'The reference for the branch or pull request.'
+    required: true
+  head_ref:
+    description: 'The head ref (for pull requests).'
+    required: false
+    default: ''
+
+outputs:
+  branch:
+    description: 'The name of the branch.'
+    value: ${{ steps.git-branch.outputs.branch }}
+
+runs:
+  using: "composite"
+  steps:
+    - name: Get branch name
+      id: git-branch
+      run: |
+        if [[ "${{ inputs.event_name }}" == "push" ]]; then
+          BRANCH_NAME="${GITHUB_REF##*/}"
+        elif [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
+          BRANCH_NAME="${GITHUB_REF##*/}"
+        elif [[ "${{ inputs.event_name }}" == "pull_request" ]]; then
+          BRANCH_NAME="${{ inputs.head_ref }}"
+        fi
+        # Convert branch name to lowercase and replace '/' with '-'
+        BRANCH_NAME=$(echo "$BRANCH_NAME" | tr '[:upper:]' '[:lower:]' | tr '/' '-')
+        echo "Branch name: $BRANCH_NAME"
+        echo "branch=${BRANCH_NAME}" >> $GITHUB_OUTPUT
+      shell: bash
