@@ -57,6 +57,8 @@ jobs:
     if: inputs.package_type == 'docker'
     name: "Docker publish (${{ inputs.package }}-${{ inputs.version }})"
     uses: okdp/gh-workflows/.github/workflows/docker-publish-template.yml@v1
+    with:
+      path: ${{ inputs.path }}
     secrets: inherit
 
 

@@ -27,6 +27,7 @@ bin/
 
 ### vscode ###
 .vscode/
+.tmp/
 
 # Other
 tmp/
