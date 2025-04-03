@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.2](https://github.com/OKDP/gh-workflows/compare/v1.1.1...v1.1.2) (2025-04-03)
+
+
+### Bug Fixes
+
+* support release creation for root-level Dockerfiles ([79904b8](https://github.com/OKDP/gh-workflows/commit/79904b88f77327566cba6c200c354b5dd80017fe))
+
 ## [1.1.1](https://github.com/OKDP/gh-workflows/compare/v1.1.0...v1.1.1) (2025-04-02)
 
 
