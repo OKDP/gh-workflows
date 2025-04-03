@@ -23,7 +23,7 @@ on:
         description: Package path
         required: false
         type: string
-        default: 'docker/'
+        default: 'docker'
       registry:
         description: Github released tag name
         required: false
@@ -101,7 +101,7 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: .
-          file: ${{ inputs.path }}Dockerfile
+          file: ${{ inputs.path }}/Dockerfile
           platforms: linux/amd64,linux/arm64
           push: true
           tags: ${{ steps.image-tags.outputs.tags }}
