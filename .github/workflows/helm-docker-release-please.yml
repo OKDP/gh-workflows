@@ -52,14 +52,14 @@ jobs:
                 {
                   path: path,
                   package: path.includes('helm/') ? path.replace(/^.+\//,''): '${{ github.repository }}'.replace(/^.+\//,''),
-                  version: releases_output[`${path}--version`],
-                  package_type: path.replace(/\/.+/,''),
-                  tag_name: releases_output[`${path}--tag_name`]
+                  version: releases_output[`${path}--version`] || releases_output['version'],
+                  package_type: path.replace(/^\.|\/.*/, '') || 'docker',
+                  tag_name: releases_output[`${path}--tag_name`] || releases_output['version']
                 }
               )
             }
             return github_releases
-
+            
   publish:
     if: needs.release-please.outputs.github_releases != '[]'
     needs: [release-please]
