@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.2.0](https://github.com/OKDP/gh-workflows/compare/v1.1.3...v1.2.0) (2026-07-09)
+
+
+### Features
+
+* added conventional commits shared workflow ([0618808](https://github.com/OKDP/gh-workflows/commit/06188089789965a848720e125a50d8d232169614))
+* added licence comment ([d1c9758](https://github.com/OKDP/gh-workflows/commit/d1c97580f8601f21fc947b2d7faf7b7bb0d6e6a3))
+
+
+### Bug Fixes
+
+* **ci:** skip image push for forked pull requests ([12b60f8](https://github.com/OKDP/gh-workflows/commit/12b60f8f655dd34a66577a59cd3b8ab83734c49f))
+
 ## [1.1.3](https://github.com/OKDP/gh-workflows/compare/v1.1.2...v1.1.3) (2026-04-07)
 
 
